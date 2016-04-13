@@ -1,0 +1,37 @@
+﻿@model List<Practice1_Web.Models.SaleItem>
+@{
+    ViewBag.Title = "GetMonthsSale";
+    Layout = "~/Views/Shared/_AdminView.cshtml";
+}
+
+<div class="container">
+    <table class="table table-responsive table-striped">
+        <thead>
+            <tr>
+                <th>ItemName</th>
+                <th>ItemCategory</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Profit</th>
+                <th>Date of Sale</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.Count; i++)
+            {
+                <tr>
+                    <td>@Model[i].ItemName</td>
+                    <td>@Model[i].ItemCategory</td>
+                    <td>@Model[i].Quantity</td>
+                    <td>@Model[i].Price</td>
+                    <td>@Model[i].Profit</td>
+                    <td>@Model[i].Date</td>
+                </tr>
+            }
+
+
+        </tbody>
+    </table>
+</div>
+

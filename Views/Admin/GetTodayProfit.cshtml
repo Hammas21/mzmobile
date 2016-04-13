@@ -1,0 +1,24 @@
+﻿
+@{
+    ViewBag.Title = "GetTodayProfit";
+    Layout = "~/Views/Shared/_AdminView.cshtml";
+}
+
+<div class="container">
+    <table class="table-striped table-bordered" style="width:90%">
+        <tr>
+            <th>Today's Sale</th>
+            <th>Today's Profit</th>
+            <th>Total Balance</th>
+        </tr>
+
+        <tr>
+            <td>@ViewBag.sale</td>
+            <td>@ViewBag.profit</td>
+            <td>@ViewBag.Balance</td>
+        </tr>
+            
+    </table>
+    
+
+</div>

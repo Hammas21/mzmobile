@@ -1,0 +1,72 @@
+﻿
+@{
+    ViewBag.Title = "Statistics";
+    Layout = "~/Views/Shared/_AdminView.cshtml";
+}
+<div class="col-lg-3"></div>
+<div class="container col-lg-6 panel-default">
+    <div class="row">
+<label >Get Sale from Month</label>
+        <form method="post" action="/Admin/GetMonthsSale">
+            <select name="month" class="input-lg">
+                <option value="01">January</option>
+                <option value="02">February</option>
+                <option value="03">March</option>
+                <option value="04">April</option>
+                <option value="05">May</option>
+                <option value="06">June</option>
+                <option value="07">July</option>
+                <option value="08">August</option>
+                <option value="09">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+            </select>
+            <input type="submit" value="Get Sale" class="input-lg" />
+        </form>
+
+    </div>
+    <br /><br />
+    <div class="row">
+        <label>Get Sale from Day</label>
+        <form method="post" action="/Admin/GetDaysSale">
+            <select name="day" class="input-lg">
+                <option value="01">01</option>
+                <option value="02">02</option>
+                <option value="03">03</option>
+                <option value="04">04</option>
+                <option value="05">05</option>
+                <option value="06">06</option>
+                <option value="07">07</option>
+                <option value="08">08</option>
+                <option value="09">09</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+                <option value="01">13</option>
+                <option value="02">14</option>
+                <option value="03">15</option>
+                <option value="04">16</option>
+                <option value="05">17</option>
+                <option value="06">18</option>
+                <option value="07">19</option>
+                <option value="08">20</option>
+                <option value="09">21</option>
+                <option value="10">22</option>
+                <option value="11">23</option>
+                <option value="12">24</option>
+                <option value="07">25</option>
+                <option value="08">26</option>
+                <option value="09">27</option>
+                <option value="10">28</option>
+                <option value="11">29</option>
+                <option value="12">30</option>
+            </select>
+            <input type="submit" value="Get Sale" class="input-lg" />
+        </form>
+
+    </div>
+    
+</div>
+
+<div class="col-lg-3"></div>

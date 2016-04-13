@@ -1,0 +1,92 @@
+﻿@model Practice1_Web.Models.Load
+@{
+    ViewBag.Title = "Load";
+    Layout = "~/Views/Shared/_AdminView.cshtml";
+}
+
+<div class="container">
+
+    <form action="/Admin/AddLoad" method="post" >
+
+        <div class="row">
+            <div class="col-md-4">
+                <label>Current Ufone Load</label>
+            </div>
+
+            <div class="col-md-4">
+                <input type="number" value=@Model.Ufone readonly/>
+            </div>
+            <div class="col-md-4">
+                <input type="number" id="ufone" name="Ufone" placeholder="Add New Load" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label>Current Jazz Load</label>
+            </div>
+
+            <div class="col-md-4">
+                <input type="number" value=@Model.Jazz readonly />
+            </div>
+            <div class="col-md-4">
+                <input type="number" id="jazz" name="Jazz" placeholder="Add New Load" />
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <label>Current Warid Load</label>
+            </div>
+
+            <div class="col-md-4">
+                <input type="number" value=@Model.Warid readonly />
+            </div>
+            <div class="col-md-4">
+                <input type="number" id="warid" name="Warid" placeholder="Add New Load" />
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <label>Current Telenor Load</label>
+            </div>
+
+            <div class="col-md-4">
+                <input type="number" value=@Model.Telenor readonly />
+            </div>
+            <div class="col-md-4">
+                <input type="number" id="telenor" name="Telenor" placeholder="Add New Load" />
+            </div>
+
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-4">
+                <label>Current Zong Load</label>
+            </div>
+
+            <div class="col-md-4">
+                <input type="number" value=@Model.Zong readonly />
+            </div>
+            <div class="col-md-4">
+                <input type="number" id="zong" name="Zong" placeholder="Add New Load" />
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-md-8" ></div>
+            <div class="col-md-4" >
+                <input type="submit" value="Add Load" class="btn btn-default" />
+                <input type="reset" value="Clear Added Valed" class="btn btn-default" />
+
+            </div>
+        </div>
+    </form>
+
+
+  
+</div>
+

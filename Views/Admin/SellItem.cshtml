@@ -1,0 +1,95 @@
+﻿@model Practice1_Web.Models.item
+@{
+    ViewBag.Title = "SellItem";
+    Layout = "~/Views/Shared/_AdminView.cshtml";
+}
+<div class="container">
+    <form id="additemform" action="/Admin/SellItem" class="form-horizontal" role="form" style="border:dotted" method="post" enctype="multipart/form-data">
+        <br /><br />
+        <input type="hidden" value=@(Model.Id) name="Id" />
+        <input type="hidden" value=@(Model.Discription_) name="Discription_" />
+        <div class="form-group">
+            <label for="firstname" class="col-md-3 control-label">Name</label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="Name" id="name" readonly value="@Model.Name">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-md-3 control-label">Buying Price</label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="BuyingPrice" id="bprice" readonly value="@Model.BuyingPrice">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-md-3 control-label">Selling Price</label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="SellingPrice" id="SellingPrice" value="@Model.SellingPrice">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password" class="col-md-3 control-label">Model Name</label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="Model" id="model" readonly value="@Model.Model">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="icode" class="col-md-3 control-label">Quantity</label>
+            <div class="col-md-9">
+                <input type="text" class="form-control" name="Quantity" id="quantity" placeholder="Enter Quantity" >
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-3" align="right">
+                <input type="submit" class="btn btn-lg btn-primary" value="Sell" />
+            </div>
+        </div>
+
+
+    </form>
+
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#additemform').submit(f1);
+        $('#name').focus();
+
+    })
+    function f1() {
+        var catag = $('[name="Catagory"] :selected').text();
+
+        if (catag == "-Select Category-") {
+            $('[name="Catagory"]').css('border-color', 'red');
+            $('[name="Catagory"]').focus();
+            return false;
+        }
+        var price = parseInt($('#SellingPrice').val());
+        if ($.isNumeric(price) == false) {
+            price = null;
+        }
+        var quantity = parseInt($('#quantity').val());
+        if ($.isNumeric(quantity) == false) {
+            quantity = null;
+        }
+
+        if (quantity == "" || quantity == null || quantity < 1) {
+            $('#quantity').focus();
+            $('#quantity').css('border-color', 'red');
+            alert('quantity cant less zero or non numeric')
+            return false;
+        }
+
+        if (price == "" || price == null || price < 0) {
+            $('#price').focus();
+            $('#price').css('border-color', 'red');
+            alert('price cant be negative or non Numeric')
+            return false;
+        }
+        else {
+            return true;
+        }
+    }
+
+</script>

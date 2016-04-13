@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @RenderSection("date", required: false)
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+
+    @RenderSection("search",required:false)
+
+
+
+
+</head>
+<body  style="background-color:white">
+    @{
+
+        var category = ViewBag.category;
+    }
+    @*Fixed Top*@
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+        <div class="navbar-header">
+            <a class="navbar-brand btn btn-default" href="/Admin/Index">MZ MOBILE</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li>
+                    <a href="/Admin/Index" class="btn btn-default hidden-xs"><span class="glyphicon glyphicon-home"></span> Home </a>
+                </li>
+                <li>
+                    <a href="/Admin/AddAnItem" class="btn btn-default hidden-xs"><span class="glyphicon glyphicon-envelope"></span> Add new Item </a>
+                </li>
+                <li>
+                    <a href="/Admin/GetTodayProfit" class="btn btn-default hidden-xs"><span class="glyphicon glyphicon-user "></span> Today's Sale </a>
+                </li>
+
+                <li>
+                    <a href="/Admin/Statistics" class="btn btn-default hidden-xs"><span class="glyphicon glyphicon-user "></span> Total Sales </a>
+                </li>
+                <li>
+                    <a href="/Admin/Load" class="btn btn-default hidden-xs"><span class="glyphicon glyphicon-user "></span> Manage Load</a>
+                </li>
+                <li>
+                    <a href="/Admin/AddNewCategory" class="btn btn-default hidden-xs"><span class="glyphicon glyphicon-user "></span> Add new Category</a>
+                </li>
+<li>              </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right">
+               
+
+                <li> 
+                        @if (Session["user"] == null)
+                        {
+                            <a href="/Home/signIn" class="btn btn-default hidden-xs">
+                                <span class="glyphicon glyphicon-log-in"></span>
+                                Login
+                            </a>
+                        }
+                        else
+                        {
+                            <a href="/Home/Logout" class="btn btn-default hidden-xs">
+                                <span class="glyphicon glyphicon-log-in"></span>
+                                <span>Logout</span>
+                            </a>
+                        }
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    @*Fixed Bottom*@
+    <div class="navbar navbar-default @*navbar-inverse*@  navbar-fixed-bottom hidden-xs">
+        <div class="navbar-header"><a class="navbar-brand btn btn-default" href="/Admin/Index">MZ Mobiles and Computer center</a></div>
+        <div>
+            <ul class="nav navbar-nav">
+                <li><a class="btn btn-default disabled">WE DELIEVER OUR BEST AND WE ARE BEST AT IT</a></li>
+
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a class="btn btn-default disabled">WE DELIEVER OUR BEST AND WE ARE BEST AT IT</a></li>
+                <li>
+
+                    <a href="/Admin/Index" class="btn btn-default"> MZ Mobiles and Computer center </a>
+                </li>
+            </ul>
+        </div>
+       
+    </div>
+    <br /><br />
+    <style>
+        .carousel-inner > .item > img,
+        .carousel-inner > .item > a > img {
+            width: 100%;
+            height: 50%;
+            max-height: 200px;
+            margin: auto;
+            border: dotted;
+        }
+    </style>
+    @*search menu and slide show *@
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-7 " style="border:dotted" @*style="background-color:white"*@>
+            <br />
+            
+
+
+            <br />
+        </div>
+        <div class="col-md-4">
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <!-- Indicators -->
+                
+            </div>
+            <button class="btn btn-primary btn-lg disabled">TODO-write some thing heare using js</button>
+            <br /><br />
+        </div>
+    </div>
+    @*Categories and renderbody()*@
+
+    <div>
+        <table id="table1">
+            
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2">
+
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h4><i class="fa fa-fw fa-check"></i>Major Categories</h4>
+                </div>
+            </div>
+            <table class="table table-bordered">
+
+                @foreach (var s in category)
+                {
+                    <tr class="hidden-xs">
+                        <td>
+                            <span class="glyphicon glyphicon-chevron-right"></span>
+                            @*@Html.ActionLink(@ViewBag.categories[i]) ,"Categories");*@
+                            @*@Html.ActionLink(@ViewBag.categories[i], "Index")*@
+                            <a href=@("/Admin/ItemsOfACategory/?category="+s.Name) class="btn btn-link">@(s.Name)</a>
+                        </td>
+                    </tr>
+                }
+                <tr>
+                    <td>
+                        <span class="glyphicon glyphicon-chevron-right"></span><a href="/Admin/Index" class=" btn btn-link">Pupolar</a>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <div class="col-lg-10">
+            @RenderBody()
+        </div>
+        <hr />
+    </div>
+    @*Bottom*@
+    <div style="background-color:black;border:dotted">
+        <br />
+        <footer class="bottom">
+            <div class="container">
+                @*<div class="row text-center">*@   @*with class="row" page scrols horizontaly!!!*@
+                <div class="col-md-4" @*style="border:dotted"*@>
+                    <h2>Getting to Users</h2>
+                    <p><span class="glyphicon glyphicon-chevron-right"> </span><a href="/Adim/AddAnUser"> ADD AN USER</a></p>
+                    <p><span class="glyphicon glyphicon-chevron-right"> </span><a href="/Home/DeleteAnUser"> DELETE AN USER</a></p>
+                    <p><span class="glyphicon glyphicon-chevron-right"> </span><a href="/Home/UpdateAnUser"> UPDATE AN USER</a></p>
+                    <br /><br />
+                </div>
+                <div class="col-md-4" @*style="border:dotted"*@>
+                    <h2>Complains and Issues</h2>
+                    <p><span class="glyphicon glyphicon-chevron-right"> </span><a href="/Admin/Complains"> GETTING ISSUES</a></p>
+                    <p><span class="glyphicon glyphicon-chevron-right"> </span><a href="/Admin/Complains"> GETTING BUGS</a></p>
+                    <br /><br /><br />
+                </div>
+
+            </div>
+            <br />
+            <br />
+            <br />
+        </footer>
+    </div>
+
+
+    <script type="text/javascript" src="~/Scripts/jquery-ui.js"></script>
+    <link type="text/css" href="~/Content/jquery-ui.css" rel="stylesheet" />
+    <script>
+
+        $(document).ready(function () {
+            $("#date").datepicker({
+                flat: true,
+                date: '2008-07-31',
+                current: '2008-07-31',
+                calendars: 1,
+                starts: 1
+            });
+
+        });
+    </script>
+
+
+
+</body>
+</html>
+
